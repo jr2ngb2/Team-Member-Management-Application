@@ -1,0 +1,37 @@
+{% block content %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+  </head>
+
+<a href="/members/create"><i class="fas fa-plus fa-2x mt-5" style="float:right;color:blue"></i></a>
+<div class="container-fluid card mb-3">
+<!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"> -->
+
+<h1>Team Members</h1>
+<h4 style="color:#808080">You have {{ object_list | length }} members</h4>
+
+{% for member in object_list %}
+<div class = "card col-md-8">
+<div class="col-md-4" style="display:flex">
+<a href = /members/{{ member.id }}/update>
+    <i class="fa fa-user fa-5x mt-5 card-img" style="float:right;color:black"></i>
+<!-- <div class = "card-img"><img src = "https://ui-avatars.com/api/?size=128" /> </div> -->
+<div class ="card-body">
+<!-- <h1>{% if member.user_type == 'USER_ADMIN' %} {{ member.first_name }} {% endif %}</h1> -->
+<p class = "card-title" style="color:black"><b>{{ member.first_name }}   {{member.last_name }} {% if member.user_type == 'USER_ADMIN' %}(admin){% endif %}</b></p>
+<p class = "card-text" style="color:#808080"><b>{{ member.phone }}</b></p>
+<div class="card-text" style="color:#808080"><b>{{  member.email }}</b></div>
+</a>
+</div>
+</div>
+</div>
+{% endfor %}
+{% endblock content %}

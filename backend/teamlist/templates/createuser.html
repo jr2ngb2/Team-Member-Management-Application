@@ -1,0 +1,33 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+  </head>
+
+  <div class = "card col-md-8" style="height:100vh">
+  <h2 style="margin-top:15px">Add a team member</h2>
+<h4 style="color:#808080">Set email , location and role</h4>
+<h4>Info</h4>
+<form method = "post">
+  
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="mt-2">
+        {{ field.errors }}
+        {% if field.label == 'User type' %}
+        <h4>Role</h4> 
+        {% endif %}
+        {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+{% endfor %}
+    <button type="submit" class="mt-4 btn btn-primary" style = "margin-left:150px">Save</button>
+    <br><br>
+    </div>
+</form>
+
