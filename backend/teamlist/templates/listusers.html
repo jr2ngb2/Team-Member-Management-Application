@@ -1,20 +1,14 @@
-{% block content %}
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
-  </head>
-
+  {% extends 'base.html' %}
+  {% block content %}
 <a href="/members/create"><i class="fas fa-plus fa-2x mt-5" style="float:right;color:blue"></i></a>
 <div class="container-fluid card mb-3">
 
 <h1>Team Members</h1>
+{% if  object_list|length == 1 %}
+<h4 style="color:#808080">You have {{ object_list | length }} member</h4>
+{% else %}
 <h4 style="color:#808080">You have {{ object_list | length }} members</h4>
-
+{% endif %}
 {% for member in object_list %}
 <div class = "card col-md-8">
 <div class="col-md-4" style="display:flex">
@@ -29,4 +23,4 @@
 </div>
 </div>
 {% endfor %}
-{% endblock content %}
+{% endblock %}

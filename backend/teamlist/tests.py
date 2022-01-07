@@ -19,7 +19,7 @@ class TeamMemberTests(TestCase):
         self.assertEqual(response.status_code , 200)
         self.assertContains(response , 'Neelendu')
         self.assertTemplateUsed(response , 'listusers.html')    
-# Create your tests here.
+
 
     def test_create_member(self):
         data = {
